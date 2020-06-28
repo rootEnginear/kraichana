@@ -23,5 +23,8 @@ module.exports = {
     manifestOptions: {
       background_color: "#ffffff"
     }
+  },
+  devServer: {
+    disableHostCheck: true
   }
 };
