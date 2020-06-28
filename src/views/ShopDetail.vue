@@ -8,29 +8,16 @@
       </div>
     </section>
     <hr />
-    กรุณาเลือกเช็คอิน หรือเช็คเอาท์
-    <div class="columns">
-      <router-link to="/shop_result" class="btn column">
-        <img
-          class="img-fluid"
-          src="../assets/checkin-icon.png"
-          style="margin:auto"
-        />
-        <div style="margin-top:8px">เช็คอิน</div>
-      </router-link>
-      <router-link
-        to="/shop_result_out"
-        class="btn column"
-        style="margin-left:16px"
-      >
-        <img
-          class="img-fluid"
-          src="../assets/checkout-icon.png"
-          style="margin:auto"
-        />
-        <div style="margin-top:8px">เช็คเอาท์</div>
-      </router-link>
-    </div>
+    <span style="color:red">@dtinth’s fork added thaichana iframe:</span>
+    <iframe
+      frameborder="0"
+      width="100%"
+      style="width:100%;height:360px;border:1px solid red;"
+      :src="
+        `https://qr.thaichana.com/?appId=${getDetail.appId}&shopId=${getDetail.shopId}`
+      "
+      >check in</iframe
+    >
     <router-link
       to="/shop_qr"
       class="list-item"
