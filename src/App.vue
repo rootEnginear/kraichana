@@ -6,8 +6,12 @@
     <footer style="padding:0 20px;font-size:80%;text-align:center">
       เว็บไซต์ "ใครชนะ?" จัดทำขึ้นเพื่อการศึกษาเท่านั้น
       <strong>ไม่มีส่วนเกี่ยวข้อง</strong>กับโครงการไทยชนะหรือเว็บไซต์
-      https://www.thaichana.com/ และ<strong>ไม่สามารถบันทึกข้อมูล</strong>ลงระบบ
-      ThaiChana ได้
+      https://www.thaichana.com/
+      และ<strong>ไม่สามารถบันทึกข้อมูล</strong>ลงระบบไทยชนะได้
+      <span style="background: #d7fc70; color: #353433"
+        >โดย fork ของ @dtinth ได้ทำการเชื่อมกับระบบไทยชนะผ่านการฝัง iframe
+        เพื่ออำนวยความสะดวกในการใช้งาน</span
+      >
     </footer>
   </div>
 </template>

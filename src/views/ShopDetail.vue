@@ -8,11 +8,13 @@
       </div>
     </section>
     <hr />
-    <span style="color:red">@dtinth’s fork added thaichana iframe:</span>
+    <span style="color:#353433;background:#d7fc70;padding:0 0.5ex;"
+      >@dtinth’s fork added thaichana iframe:</span
+    >
     <iframe
       frameborder="0"
       width="100%"
-      style="width:100%;height:360px;border:1px solid red;"
+      style="width:100%;height:330px;border:2px solid #d7fc70;"
       :src="
         `https://qr.thaichana.com/?appId=${getDetail.appId}&shopId=${getDetail.shopId}`
       "
