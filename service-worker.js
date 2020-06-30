@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/kraichana/precache-manifest.5ad7d6cf84b31029c26ee83b265048cd.js"
+  "/kraichana/precache-manifest.febf7fae1c031fca857f262af5e53175.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "krai-chana"});
