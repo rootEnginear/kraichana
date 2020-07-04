@@ -17,14 +17,6 @@ const routes = [
     }
   },
   {
-    path: "/qr",
-    name: "QRcode",
-    component: loadView("QRCodeReader"),
-    meta: {
-      title: "QRCode Reader"
-    }
-  },
-  {
     path: "/shop_detail",
     name: "ShopDetail",
     component: loadView("ShopDetail"),

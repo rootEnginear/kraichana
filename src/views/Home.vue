@@ -1,16 +1,11 @@
 <template>
   <div class="home">
-    <section class="media center" style="margin:1.5rem 0">
-      <div class="body">
-        <h1>🙏 สวัสดีค่ะ</h1>
-        <p>กดสแกน QR Code ได้เลยค่ะ</p>
+    <div class="qr">
+      <div class="reader" style="height:50vh">
+        <qrcode-stream @decode="onDecode"></qrcode-stream>
       </div>
-      <div>
-        <router-link to="/qr" aria-label="แสกน QR Code"
-          ><i class="fas fa-qrcode fa-5x"></i
-        ></router-link>
-      </div>
-    </section>
+      <app-toast v-if="was_incorrect" msg="QR Code ไม่ถูกต้อง" />
+    </div>
     <hr />
     <section>
       <div class="media center" style="margin-bottom:8px">
@@ -78,21 +73,54 @@
 <script>
 import AppShoppingIcon from "@/components/AppShoppingIcon";
 import AppEmptyState from "@/components/AppEmptyState";
+import AppToast from "@/components/AppToast";
 import storeGetter from "@/store/getter.js";
+import {QrcodeStream} from "vue-qrcode-reader";
 
 export default {
   name: "Home",
   components: {
     AppShoppingIcon,
-    AppEmptyState
+    AppEmptyState,
+    QrcodeStream,
+    AppToast
   },
   computed: {
     ...storeGetter
   },
+  data() {
+    return {
+      was_incorrect: false
+    };
+  },
   methods: {
+    onDecode(result) {
+      console.log(result);
+      if (result.indexOf("qr.thaichana.com") !== -1) {
+        const url = new URL(result);
+        const params = new URLSearchParams(url.search);
+        let appId = params.get("appId");
+        let shopId = params.get("shopId");
+        fetch(`https://api-customer.thaichana.com/shop/${appId}/${shopId}/qr`)
+                .then(res => res.json())
+                .then(data => {
+                  this.gotoShop(data);
+                })
+                // eslint-disable-next-line no-unused-vars
+                .catch(_ => (this.was_incorrect = true));
+      } else {
+        this.was_incorrect = true;
+      }
+    },
     gotoShop(shopData) {
       this.$store.dispatch("setDetail", shopData);
       this.$router.push("/shop_detail");
+    }
+  },
+  watch: {
+    was_incorrect() {
+      if (this.was_incorrect)
+        setTimeout(() => (this.was_incorrect = false), 5000);
     }
   }
 };
