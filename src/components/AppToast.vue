@@ -48,6 +48,7 @@ export default {
   color: #856404;
   background-color: #fff3cd;
   border-color: #ffeeba;
+  z-index: 1;
 
   &.success {
     color: #155724;
