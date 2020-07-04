@@ -38,14 +38,12 @@
 </template>
 
 <script>
-import AppShoppingIcon from "@/components/AppShoppingIcon";
 import AppToast from "@/components/AppToast";
 import storeGetter from "@/store/getter.js";
 
 export default {
   name: "ShopDetail",
   components: {
-    AppShoppingIcon,
     AppToast
   },
   data() {
