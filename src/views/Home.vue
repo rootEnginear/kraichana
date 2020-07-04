@@ -2,7 +2,7 @@
   <div class="home">
     <div class="qr">
       <div class="reader" style="height:50vh">
-        <qrcode-stream @decode="onDecode"></qrcode-stream>
+        <qrcode-stream :camera="camera" @decode="onDecode"></qrcode-stream>
       </div>
       <app-toast v-if="was_incorrect" msg="QR Code ไม่ถูกต้อง" />
     </div>
@@ -90,7 +90,8 @@ export default {
   },
   data() {
     return {
-      was_incorrect: false
+      was_incorrect: false,
+      camera: 'auto'
     };
   },
   methods: {
@@ -115,6 +116,12 @@ export default {
     gotoShop(shopData) {
       this.$store.dispatch("setDetail", shopData);
       this.$router.push("/shop_detail");
+    },
+    startCamera() {
+      this.camera = 'auto';
+    },
+    stopCamera() {
+      this.camera = 'off';
     }
   },
   watch: {
@@ -122,6 +129,14 @@ export default {
       if (this.was_incorrect)
         setTimeout(() => (this.was_incorrect = false), 5000);
     }
+  },
+  created: function () {
+    window.addEventListener('focus', this.startCamera);
+    window.addEventListener('blur', this.stopCamera);
+  },
+  destroyed: function () {
+    window.removeEventListener('focus', this.startCamera);
+    window.removeEventListener('blur', this.stopCamera);
   }
 };
 </script>
