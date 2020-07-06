@@ -21,7 +21,7 @@
       </div>
     </section>
     <section class="qr">
-      <router-link v-if="currentPath !== '/' && currentPath !== '/qr'" to="/qr"
+      <router-link v-if="currentPath !== '/'" to="/"
         ><i class="fas fa-qrcode fa-2x"></i
       ></router-link>
     </section>
