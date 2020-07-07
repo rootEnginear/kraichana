@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import AppListItem from "@/components/AppListItem";
 import AppEmptyState from "@/components/AppEmptyState";
+import AppListItem from "@/components/AppListItem";
 import storeGetter from "@/store/getter.js";
 
 export default {

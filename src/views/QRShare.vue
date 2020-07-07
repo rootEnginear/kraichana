@@ -18,10 +18,10 @@
 </template>
 
 <script>
-import VueQr from "vue-qr";
-import storeGetter from "@/store/getter.js";
-import logoImg from "@/assets/logo.png";
 import bgImg from "@/assets/bg.png";
+import logoImg from "@/assets/logo.png";
+import storeGetter from "@/store/getter.js";
+import VueQr from "vue-qr";
 
 export default {
   name: "ShopDetail",

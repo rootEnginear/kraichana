@@ -55,8 +55,8 @@
 </template>
 
 <script>
-import AppListItem from "@/components/AppListItem";
 import AppEmptyState from "@/components/AppEmptyState";
+import AppListItem from "@/components/AppListItem";
 import AppToast from "@/components/AppToast";
 import storeGetter from "@/store/getter.js";
 import { QrcodeStream } from "vue-qrcode-reader";
@@ -80,7 +80,6 @@ export default {
   },
   methods: {
     onDecode(result) {
-      console.log(result);
       if (result.indexOf("qr.thaichana.com") !== -1) {
         const url = new URL(result);
         const params = new URLSearchParams(url.search);
