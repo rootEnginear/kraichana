@@ -41,22 +41,6 @@ const routes = [
     }
   },
   {
-    path: "/shop_result",
-    name: "ShopResult",
-    component: loadView("ShopResult"),
-    meta: {
-      title: "เช็คอินแล้ว"
-    }
-  },
-  {
-    path: "/shop_result_out",
-    name: "ShopResultOut",
-    component: loadView("ShopResultOut"),
-    meta: {
-      title: "เช็คเอาท์แล้ว"
-    }
-  },
-  {
     path: "/shop_qr",
     name: "QRShare",
     component: loadView("QRShare"),
