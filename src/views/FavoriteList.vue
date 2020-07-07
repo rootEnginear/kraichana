@@ -51,7 +51,12 @@ export default {
       this.$router.push("/shop_detail");
     },
     removeFavorite(data) {
-      this.$store.dispatch("deleteFavorite", data);
+      if (
+        confirm(
+          "ต้องการลบรายการโปรดนี้หรือไม่?\nเมื่อลบแล้วจะต้องทำการเพิ่มรายการโปรดใหม่จากสแกนอีกครั้ง"
+        )
+      )
+        this.$store.dispatch("deleteFavorite", data);
     }
   }
 };
