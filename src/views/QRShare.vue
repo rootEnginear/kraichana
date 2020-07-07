@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <main class="app-main qrshare">
     <div class="qrcode">
       <vue-qr
         :logoSrc="logo"
@@ -14,7 +14,7 @@
       <h2>{{ getDetail.shopName }}</h2>
       <p>{{ getDetail.businessType }}</p>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -47,12 +47,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.container {
-  margin-top: 2rem;
-  padding: 0 20px;
-}
-
+<style scoped>
 .qrcode {
   display: flex;
   justify-content: center;

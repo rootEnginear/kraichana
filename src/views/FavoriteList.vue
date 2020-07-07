@@ -1,46 +1,32 @@
 <template>
-  <div class="favorite-list">
+  <main class="app-main favorite-list">
     <h1 style="margin-bottom:.4rem">แก้ไขรายการโปรด</h1>
     <app-empty-state
       v-if="!getFavorite.length"
       name="รายการโปรด"
       description="ท่านสามารถเพิ่มสถานที่ลงในรายการโปรดได้หลังจากเช็คอินสถานที่นั้น"
     />
-    <div
+    <app-list-item
       v-for="(shop, index) in getFavorite"
       :key="index"
-      class="list-item"
-      @click="gotoShop(shop)"
-    >
-      <div class="media">
-        <app-shopping-icon />
-        <div class="body" style="margin-left:10px">
-          <h2>{{ shop.shopName }}</h2>
-          <p>{{ shop.businessType }}</p>
-        </div>
-        <div
-          class="close"
-          @click.stop="
-            removeFavorite({ appId: shop.appId, shopId: shop.shopId })
-          "
-        >
-          <i class="fas fa-times-circle fa-2x"></i>
-        </div>
-      </div>
-    </div>
-  </div>
+      v-bind="shop"
+      @click.native="gotoShop(shop)"
+      @remove="removeFavorite"
+      removable
+    />
+  </main>
 </template>
 
 <script>
-import AppShoppingIcon from "@/components/AppShoppingIcon";
 import AppEmptyState from "@/components/AppEmptyState";
+import AppListItem from "@/components/AppListItem";
 import storeGetter from "@/store/getter.js";
 
 export default {
   name: "ViewHistory",
   components: {
-    AppShoppingIcon,
-    AppEmptyState
+    AppEmptyState,
+    AppListItem
   },
   computed: {
     ...storeGetter
@@ -60,14 +46,5 @@ export default {
 <style scoped>
 .favorite-list {
   margin-top: 1rem;
-  padding: 0 20px;
-}
-
-.list-item > .media > .close {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  color: #ff3860;
-  z-index: 2;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <main class="app-main home">
     <div class="qr">
       <div class="reader" style="height:50vh">
         <qrcode-stream :camera="camera" @decode="onDecode"></qrcode-stream>
@@ -8,8 +8,8 @@
     </div>
     <hr />
     <section>
-      <div class="media center" style="margin-bottom:8px">
-        <h1 class="body">สถานที่ล่าสุด</h1>
+      <div class="columns middle" style="margin-bottom:8px">
+        <h1 class="expanded">สถานที่ล่าสุด</h1>
         <div>
           <router-link to="/history" aria-label="ประวัติสถานที่ทั้งหมด">
             <i class="fas fa-history fa-2x"></i>
@@ -17,20 +17,12 @@
         </div>
       </div>
       <app-empty-state v-if="!getTopHistory.length" name="ประวัติสถานที่" />
-      <div
+      <app-list-item
         v-for="(shop, index) in getTopHistory"
         :key="index"
-        class="list-item"
-        @click="gotoShop(shop)"
-      >
-        <div class="media">
-          <app-shopping-icon />
-          <div class="body" style="margin-left:10px">
-            <h2>{{ shop.shopName }}</h2>
-            <p>{{ shop.businessType }}</p>
-          </div>
-        </div>
-      </div>
+        v-bind="shop"
+        @click.native="gotoShop(shop)"
+      />
       <router-link v-if="getHistory.length > 3" to="/history">
         <div class="list-item" style="text-align:center;font-size:1.25rem">
           ดูเพิ่มเติม...
@@ -39,8 +31,8 @@
     </section>
     <hr />
     <section>
-      <div class="media center" style="margin-bottom:8px">
-        <h1 class="body">รายการโปรด</h1>
+      <div class="columns middle" style="margin-bottom:8px">
+        <h1 class="expanded">รายการโปรด</h1>
         <div>
           <router-link to="/favorite" aria-label="แก้ไขรายการโปรด">
             <i class="fas fa-pen fa-2x"></i>
@@ -52,35 +44,27 @@
         name="รายการโปรด"
         description="ท่านสามารถเพิ่มสถานที่ลงในรายการโปรดได้หลังจากเช็คอินสถานที่นั้น"
       />
-      <div
+      <app-list-item
         v-for="(shop, index) in getFavorite"
         :key="index"
-        class="list-item"
-        @click="gotoShop(shop)"
-      >
-        <div class="media">
-          <app-shopping-icon />
-          <div class="body" style="margin-left:10px">
-            <h2>{{ shop.shopName }}</h2>
-            <p>{{ shop.businessType }}</p>
-          </div>
-        </div>
-      </div>
+        v-bind="shop"
+        @click.native="gotoShop(shop)"
+      />
     </section>
-  </div>
+  </main>
 </template>
 
 <script>
-import AppShoppingIcon from "@/components/AppShoppingIcon";
+import AppListItem from "@/components/AppListItem";
 import AppEmptyState from "@/components/AppEmptyState";
 import AppToast from "@/components/AppToast";
 import storeGetter from "@/store/getter.js";
-import {QrcodeStream} from "vue-qrcode-reader";
+import { QrcodeStream } from "vue-qrcode-reader";
 
 export default {
   name: "Home",
   components: {
-    AppShoppingIcon,
+    AppListItem,
     AppEmptyState,
     QrcodeStream,
     AppToast
@@ -91,7 +75,7 @@ export default {
   data() {
     return {
       was_incorrect: false,
-      camera: 'auto'
+      camera: "auto"
     };
   },
   methods: {
@@ -103,12 +87,12 @@ export default {
         let appId = params.get("appId");
         let shopId = params.get("shopId");
         fetch(`https://api-customer.thaichana.com/shop/${appId}/${shopId}/qr`)
-                .then(res => res.json())
-                .then(data => {
-                  this.gotoShop(data);
-                })
-                // eslint-disable-next-line no-unused-vars
-                .catch(_ => (this.was_incorrect = true));
+          .then(res => res.json())
+          .then(data => {
+            this.gotoShop(data);
+          })
+          // eslint-disable-next-line no-unused-vars
+          .catch(_ => (this.was_incorrect = true));
       } else {
         this.was_incorrect = true;
       }
@@ -118,10 +102,10 @@ export default {
       this.$router.push("/shop_detail");
     },
     startCamera() {
-      this.camera = 'auto';
+      this.camera = "auto";
     },
     stopCamera() {
-      this.camera = 'off';
+      this.camera = "off";
     }
   },
   watch: {
@@ -130,20 +114,13 @@ export default {
         setTimeout(() => (this.was_incorrect = false), 5000);
     }
   },
-  created: function () {
-    window.addEventListener('focus', this.startCamera);
-    window.addEventListener('blur', this.stopCamera);
+  created: function() {
+    window.addEventListener("focus", this.startCamera);
+    window.addEventListener("blur", this.stopCamera);
   },
-  destroyed: function () {
-    window.removeEventListener('focus', this.startCamera);
-    window.removeEventListener('blur', this.stopCamera);
+  destroyed: function() {
+    window.removeEventListener("focus", this.startCamera);
+    window.removeEventListener("blur", this.stopCamera);
   }
 };
 </script>
-
-<style lang="scss" scoped>
-.home {
-  margin-top: 2rem;
-  padding: 0 20px;
-}
-</style>
