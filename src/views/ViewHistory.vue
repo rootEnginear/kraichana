@@ -17,6 +17,14 @@
           <h2>{{ shop.shopName }}</h2>
           <p>{{ shop.businessType }}</p>
         </div>
+        <div
+          class="close"
+          @click.stop="
+            removeHistory({ appId: shop.appId, shopId: shop.shopId })
+          "
+        >
+          <i class="fas fa-times-circle fa-2x"></i>
+        </div>
       </div>
     </div>
   </div>
@@ -48,6 +56,9 @@ export default {
         )
       )
         this.$store.dispatch("clearHistory");
+    },
+    removeHistory(data) {
+        this.$store.dispatch("deleteHistory", data);
     }
   }
 };
@@ -57,5 +68,13 @@ export default {
 .view-history {
   margin-top: 1rem;
   padding: 0 20px;
+}
+
+.list-item > .media > .close {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  color: #ff3860;
+  z-index: 2;
 }
 </style>
