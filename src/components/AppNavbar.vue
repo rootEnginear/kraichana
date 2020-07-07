@@ -1,6 +1,6 @@
 <template>
   <nav class="main-navbar" role="navigation" aria-label="main navigation">
-    <section class="home">
+    <section class="side">
       <a v-if="currentPath !== '/'" @click="$router.go(-1)"
         ><i class="fas fa-arrow-left fa-2x"></i
       ></a>
@@ -26,11 +26,7 @@
         </span>
       </div>
     </section>
-    <section class="qr">
-      <router-link v-if="currentPath !== '/'" to="/"
-        ><i class="fas fa-qrcode fa-2x"></i
-      ></router-link>
-    </section>
+    <section class="side"></section>
   </nav>
 </template>
 
@@ -69,8 +65,7 @@ export default {
     align-items: center;
   }
 
-  > .home,
-  > .qr {
+  > .side {
     width: 36px;
     height: 36px;
     position: relative;
