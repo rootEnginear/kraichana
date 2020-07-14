@@ -6,24 +6,20 @@
       ></a>
     </section>
     <section class="title">
-      <div style="position:relative;display:inline-block;">
-        <img
-          class="img-fluid"
-          style="height:36px"
-          src="@/assets/logo_with_text.png"
-          alt="ใครชนะ?"
-        />
-        <span
-          style="position:absolute;bottom:0;right:0;display:block;text-align:right;font-size:10px;transform:rotate(-12deg) translate(42px,12px);transform-origin:bottom right;"
-        >
-          <span style="background:#353433;color:#d7fc70;padding:0 2px"
-            >but it’s</span
-          >
-          <br />
-          <span style="background:#353433;color:#d7fc70;padding:0 2px"
-            >actually usable</span
-          >
-        </span>
+      <div
+        style="position:relative;display:inline-block;"
+        @click="$router.go(-1)"
+      >
+        <picture>
+          <source srcset="@/assets/logo_horiz.webp" type="image/webp" />
+          <source srcset="@/assets/logo_horiz.png" type="image/png" />
+          <img
+            class="img-fluid"
+            style="height:36px"
+            src="@/assets/logo_horiz.png"
+            alt="ใครชนะ?"
+          />
+        </picture>
       </div>
     </section>
     <section class="side"></section>
