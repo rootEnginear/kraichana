@@ -1,6 +1,6 @@
 <template>
   <main class="app-main qrshare">
-    <div class="qrcode">
+    <div style="display:flex;justify-content:center">
       <vue-qr
         :logoSrc="logo"
         :bgSrc="bg"
@@ -10,7 +10,7 @@
         :dotScale="dotScale"
       />
     </div>
-    <div class="detail">
+    <div style="text-align:center">
       <h2>{{ getDetail.shopName }}</h2>
       <p>{{ getDetail.businessType }}</p>
     </div>
@@ -46,14 +46,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.qrcode {
-  display: flex;
-  justify-content: center;
-}
-
-.detail {
-  text-align: center;
-}
-</style>

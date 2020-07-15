@@ -1,5 +1,5 @@
 <template>
-  <main class="app-main favorite-list">
+  <main class="app-main favorite-list" style="margin-top:1rem">
     <h1 style="margin-bottom:.4rem">แก้ไขรายการโปรด</h1>
     <app-empty-state
       v-if="!getFavorite.length"
@@ -47,9 +47,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.favorite-list {
-  margin-top: 1rem;
-}
-</style>

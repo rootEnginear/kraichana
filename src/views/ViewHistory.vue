@@ -1,5 +1,5 @@
 <template>
-  <main class="app-main view-history">
+  <main class="app-main view-history" style="margin-top:1rem">
     <div class="columns middle" style="margin-bottom:.4rem">
       <h1 class="expanded">ประวัติสถานที่</h1>
       <div @click="clearHistory()"><i class="fas fa-trash-alt fa-2x"></i></div>
@@ -54,17 +54,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.view-history {
-  margin-top: 1rem;
-}
-
-.list-item > .media > .close {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  color: #ff3860;
-  z-index: 2;
-}
-</style>

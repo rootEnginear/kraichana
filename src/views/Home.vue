@@ -2,7 +2,7 @@
   <main class="app-main home">
     <div class="qr">
       <div class="reader" style="height:50vh">
-        <qrcode-stream :camera="camera" @decode="onDecode"></qrcode-stream>
+        <qrcode-stream :camera="camera" @decode="onDecode" />
       </div>
       <app-toast v-if="was_incorrect" msg="QR Code ไม่ถูกต้อง" />
     </div>
